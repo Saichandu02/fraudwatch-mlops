@@ -1,0 +1,7 @@
+# Optional heavy integrations. The project runs fully without these;
+# the registry implements MLflow-equivalent semantics in SQLite and the
+# candidate falls back to HistGradientBoosting without xgboost.
+# Documented in docs/decisions.md -- install only with enough time/RAM.
+xgboost>=2.0
+mlflow>=2.10
+shap>=0.44

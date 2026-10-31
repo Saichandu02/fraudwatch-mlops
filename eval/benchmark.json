@@ -1,0 +1,6 @@
+{
+  "benchmark": "POST /api/predict, 200 requests after 20 warm-up, sequential, localhost, this VM (4 cores)",
+  "p50_ms": 10.27,
+  "p95_ms": 13.08,
+  "mean_ms": 10.71
+}

@@ -1,0 +1,6 @@
+Screenshot / recording: PENDING (no screen-capture tooling in the build
+environment). Verifiable substitute: eval/http_demo.md contains the live
+API responses including the model card, a scored transaction, and the
+2 -> 1 -> 2 rollback sequence. To capture the UI: start the server
+(README quickstart), open http://localhost:8023/ and /docs, and screenshot
+the OpenAPI "Try it out" predict call described in docs/demo.md.

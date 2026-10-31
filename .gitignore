@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+artifacts/
+mlruns/
+mlflow.db
+data/transactions.csv
+tests/_artifacts/
+.pytest_cache/
+.env
+*.egg-info/

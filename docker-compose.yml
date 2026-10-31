@@ -1,0 +1,34 @@
+# Local composition (CONFIG ONLY in the build environment -- Docker was not
+# available there, so this file was not executed; see docs/verification.md).
+# MLflow/Postgres/Grafana are the documented full route; the default local
+# path uses the built-in SQLite registry so the demo runs with zero services.
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      FRAUDWATCH_ADMIN_TOKEN: ${FRAUDWATCH_ADMIN_TOKEN:-local-dev-token}
+    volumes:
+      - artifacts:/app/artifacts
+      - data:/app/data
+  # Optional, profile-gated full stack:
+  postgres:
+    profiles: ["full"]
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: mlflow
+      POSTGRES_USER: mlflow
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-mlflow-local}
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+  mlflow:
+    profiles: ["full"]
+    image: ghcr.io/mlflow/mlflow:latest
+    command: mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri postgresql://mlflow:${POSTGRES_PASSWORD:-mlflow-local}@postgres:5432/mlflow --default-artifact-root /mlartifacts
+    ports: ["5000:5000"]
+    volumes: ["mlartifacts:/mlartifacts"]
+    depends_on: [postgres]
+volumes:
+  artifacts: {}
+  data: {}
+  pgdata: {}
+  mlartifacts: {}

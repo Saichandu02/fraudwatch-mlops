@@ -1,0 +1,60 @@
+{
+  "per_feature_psi": {
+    "amount": {
+      "psi": 0.307,
+      "level": "significant"
+    },
+    "hour": {
+      "psi": 0.0013,
+      "level": "stable"
+    },
+    "day_of_week": {
+      "psi": 0.0029,
+      "level": "stable"
+    },
+    "is_weekend": {
+      "psi": 0.0,
+      "level": "stable"
+    },
+    "country_match": {
+      "psi": 0.0,
+      "level": "stable"
+    },
+    "velocity_24h": {
+      "psi": 0.2844,
+      "level": "significant"
+    },
+    "days_since_prev_tx": {
+      "psi": 0.635,
+      "level": "significant"
+    },
+    "amount_ratio_to_customer_median": {
+      "psi": 0.005,
+      "level": "stable"
+    },
+    "customer_age_days": {
+      "psi": 0.0095,
+      "level": "stable"
+    }
+  },
+  "categorical_shift": {
+    "merchant_category": {
+      "total_variation_distance": 0.1862
+    },
+    "channel": {
+      "total_variation_distance": 0.1803
+    },
+    "device_type": {
+      "total_variation_distance": 0.1283
+    }
+  },
+  "drift_detected": true,
+  "significant_features": [
+    "amount",
+    "velocity_24h",
+    "days_since_prev_tx"
+  ],
+  "interpretation": "Distribution shift detected on: amount, velocity_24h, days_since_prev_tx. This requests review/retraining. It does NOT show accuracy has degraded -- labels for the drifted period have not arrived yet.",
+  "reference": "training distribution, seed 42, n=20000",
+  "current": "drifted period, seed 123, n=8000 (amounts x1.6, online/crypto/travel share up)"
+}
